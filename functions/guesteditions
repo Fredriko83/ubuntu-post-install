@@ -1,12 +1,17 @@
 #!/bin/bash
-sudo apt-get install build-essentials module-assistant
-sudo m-a prepare
-read -rsp $'Mount Guest Editions and press any key to continue...\n' -n1 key
-mkdir cdrom
-sudo mount /dev/sr0 cdrom
-cd cdrom
-sudo ./VBoxLinuxAdditions.run
-sudo reboot
 
-#run chmod +x on this file
-#then ./guest-editions.sh
+dir="$(dirname "$0")"
+
+function guesteditions {
+    sudo apt-get install build-essentials module-assistant
+    sudo m-a prepare
+    read -rsp $'Mount Guest Editions and press any key to continue...\n' -n1 key
+    mkdir cdrom
+    sudo mount /dev/sr0 cdrom
+    cd cdrom
+    sudo ./VBoxLinuxAdditions.run
+    sudo reboot
+
+    #run chmod +x on this file
+    #then ./guest-editions.sh
+}
