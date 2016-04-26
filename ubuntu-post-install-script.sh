@@ -38,6 +38,7 @@ dir="$(dirname "$0")"
 . $dir/functions/thirdparty
 . $dir/functions/update
 . $dir/functions/utilities
+. $dir/functions/guesteditions
 
 #----- Fancy Messages -----#
 show_error(){
@@ -71,14 +72,15 @@ function main {
         --menu "\nWhat would you like to do?" \
         --cancel-button "Quit" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        update      'Perform system update' \
-        favourites  'Install favourite applications' \
-        utilities   'Install favourite system utilities' \
-        development 'Install favourite development tools' \
-        codecs      'Install Ubuntu Restricted Extras' \
-        thirdparty  'Install third-party applications' \
-        configure   'Configure system' \
-        cleanup     'Cleanup the system' \
+        guesteditions 'Install Guest Editions' \
+        update        'Perform system update' \
+        favourites    'Install favourite applications' \
+        utilities     'Install favourite system utilities' \
+        development   'Install favourite development tools' \
+        codecs        'Install Ubuntu Restricted Extras' \
+        thirdparty    'Install third-party applications' \
+        configure     'Configure system' \
+        cleanup       'Cleanup the system' \
         3>&1 1>&2 2>&3)
      
     exitstatus=$?
